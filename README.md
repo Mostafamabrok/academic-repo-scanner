@@ -23,7 +23,7 @@ This Python script is designed to scan GitHub repositories based on a search que
 ## Installation
 1. Clone this repository:
     ```bash
-    https://github.com/Mostafamabrok/academic-repo-scanner.git
+    git clone https://github.com/Mostafamabrok/academic-repo-scanner.git
     ```
 2. Navigate to the project directory:
     ```bash
