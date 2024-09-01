@@ -84,15 +84,20 @@ def main(params, pages):
     setup_boilerplate()
     basic_repo_search(params=params, pages = pages)
 
-query = "repo"
-sort_by = "stars"
-
-
-params = {
-    'q' : query,
-    'sort' : sort_by,
-    'order' : 'desc',
-    'type' : 'repositories'
-}
+if "__name__" = __main__:
     
-main(params, 2)
+    query = "repo"
+    sort_by = "stars"
+
+
+    params = {
+        'q' : query,
+        'sort' : sort_by,
+        'order' : 'desc',
+        'type' : 'repositories'
+    }
+    
+    main(params, 2)
+
+
+
