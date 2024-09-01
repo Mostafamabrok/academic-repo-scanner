@@ -84,7 +84,7 @@ def main(params, pages):
     setup_boilerplate()
     basic_repo_search(params=params, pages = pages)
 
-if "__name__" = __main__:
+if "__name__" == __main__:
     
     query = "repo"
     sort_by = "stars"
