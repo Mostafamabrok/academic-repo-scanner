@@ -8,7 +8,7 @@ def get_repos_for_scan():
 
     with open("repos_info.json", "r") as file:
         repos_info_json = json.load(file)
-    
+
     for repo in repos_info_json:
         repo_url_list.append(repo["url"])
 
@@ -16,7 +16,32 @@ def get_repos_for_scan():
 
 
 def check_repo_terms(terms):
-    pass
+
+    repo_url_list = get_repos_for_scan()
+    
+    print(f"Scanning {len(repo_url_list)} repositories for terms.")
+
+    term_occurrences = {}
+
+    for repo_url in repo_url_list:
+        response = requests.get(repo_url)
+
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            repo_text = soup.get_text().lower()
+
+            for term in terms:
+                if term in term_occurrences:
+                    term_occurrences[term] = term_occurrences[term] + repo_text.count(term.lower())
+                else: 
+                    term_occurrences[term] = repo_text.count(term.lower())
+
+        else:
+            print(f"Request didn't come through, status_code: {response.status_code}")
+
+        print(f"Scanned: ({repo_url})")
+
+    return term_occurrences
 
 def look_for_new_terms():
     pass
@@ -26,8 +51,8 @@ def full_scan():
 
 
 def dev_test():   
-    for repo_url in get_repos_for_scan():
-        print(repo_url)
+    print("\n")
+    print(check_repo_terms(["and"]))
 
 dev_test()
 

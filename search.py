@@ -39,7 +39,7 @@ def basic_repo_search(params, pages=2):
     #This will simply search for all the repos with the query in it and write down the repo properties, like name, description, and link.
     #This can then be used later to search through repos README's and Codes look for terms and count them.
 
-
+    
     if os.path.exists("repos_info.json"):
         try:
             os.remove("repos_info.json")
@@ -50,6 +50,8 @@ def basic_repo_search(params, pages=2):
 
 
     for page in range(0, pages-1):
+        
+        params['page'] = page
 
         if isinstance(search(params), int):
             print(f"ERROR: Could not perform search, returned status code:{search(query)}")
@@ -70,7 +72,7 @@ def basic_repo_search(params, pages=2):
             repo_info = {
                 "title": item['name'],
                 "url": item['html_url']
-            }   
+            }
             repos_info.append(repo_info)
             print(f"{item['name']} appended to repo info json.")
         
@@ -86,7 +88,7 @@ def main(params, pages):
 
 if __name__ == '__main__' :
     
-    query = "glasses"
+    query = "Stroke"
     sort_by = ""
 
 
@@ -97,7 +99,7 @@ if __name__ == '__main__' :
         'type' : 'repositories'
     }
     
-    main(params, 2)
+    main(params, pages = 5)
 
 
 
