@@ -80,7 +80,7 @@ def main(params, pages):
     basic_repo_search(params=params, pages=pages)
 
 if __name__ == '__main__':
-    query = "Stroke"
+    query = "Stroke Segmentation"
     sort_by = ""
 
     params = {
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         'type': 'repositories'
     }
 
-    main(params, pages=5)
+    main(params, pages=1)
 
 
 

@@ -43,6 +43,9 @@ def check_repo_terms(terms):
 
     return term_occurrences
 
+def advanced_term_check(terms):
+    pass
+
 def look_for_new_terms():
     pass
 
@@ -52,7 +55,7 @@ def full_scan():
 
 def dev_test():   
     print("\n")
-    print(check_repo_terms(["and"]))
+    print(check_repo_terms(["CNN", "U-net", "Chinese"]))
 
 dev_test()
 
