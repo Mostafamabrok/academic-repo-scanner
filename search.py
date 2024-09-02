@@ -72,7 +72,7 @@ def basic_repo_search(params, pages=2):
                 "url": item['html_url']
             }   
             repos_info.append(repo_info)
-            print("Item appended to repo info json.")
+            print(f"{item['name']} appended to repo info json.")
         
 
     with open("repos_info.json", "w") as json_file:
@@ -86,8 +86,8 @@ def main(params, pages):
 
 if __name__ == '__main__' :
     
-    query = "repo"
-    sort_by = "stars"
+    query = "glasses"
+    sort_by = ""
 
 
     params = {

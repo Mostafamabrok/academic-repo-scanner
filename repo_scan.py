@@ -15,7 +15,7 @@ def get_repos_for_scan():
     return repo_url_list
 
 
-def check_repo_terms():
+def check_repo_terms(terms):
     pass
 
 def look_for_new_terms():
