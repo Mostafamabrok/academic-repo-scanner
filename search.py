@@ -2,19 +2,17 @@ import requests
 import os
 import json
 
-def setup_boilerplate():
-    global search
+def search(params):
+        
+    url = 'https://api.github.com/search/repositories' 
 
-    url = 'https://api.github.com/search/repositories'
+    search_response = requests.get(url, params=params)
 
-    def search(params):
-        search_response = requests.get(url, params=params)
-
-        if search_response.status_code == 200:
-            return search_response
-        else:
-            print(f"Search did not work, returned the following status code: {search_response.status_code}")
-            return search_response.status_code
+    if search_response.status_code == 200:
+        return search_response
+    else:
+        print(f"Search did not work, returned the following status code: {search_response.status_code}")
+        return search_response.status_code
 
 def basic_repo_search(params, pages=2):
     # This will simply search for all the repos with the query in it and write down the repo properties, like name, description, and link.
@@ -62,7 +60,6 @@ def basic_repo_search(params, pages=2):
         print("JSON data has been dumped.")
 
 def main(params, pages):
-    setup_boilerplate()
     basic_repo_search(params=params, pages=pages)
 
 if __name__ == '__main__':
