@@ -15,7 +15,7 @@ def get_repos_for_scan():
     return repo_url_list
 
 
-def check_repo_terms(terms):
+def basic_term_check(terms):
 
     repo_url_list = get_repos_for_scan()
     
@@ -55,7 +55,7 @@ def full_scan():
 
 def dev_test():   
     print("\n")
-    print(check_repo_terms(["CNN", "U-net", "Chinese"]))
+    print(basic_term_check(["CNN", "U-net", "Chinese"]))
 
 dev_test()
 
