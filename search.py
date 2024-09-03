@@ -2,20 +2,6 @@ import requests
 import os
 import json
 
-def api_test():
-    urls_dict = {
-        'repos': 'https://api.github.com/search/repositories?q='
-    }
-
-    query = "dumprun"
-    test_response = requests.get(urls_dict["repos"] + query)
-
-    if test_response.status_code == 200:
-        response = test_response.json()
-        print(response)
-    else:
-        print(f"Didn't Work, Response code: {test_response.status_code}")
-
 def setup_boilerplate():
     global search
 
