@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 
 def get_repos_for_scan():
     repo_url_list = []
+    repo_db_name = "repos_info.json"
 
-    with open("repos_info.json", "r") as file:
+    with open(repo_db_name, "r") as file:
         repos_info_json = json.load(file)
 
     for repo in repos_info_json:
@@ -15,7 +16,7 @@ def get_repos_for_scan():
     return repo_url_list
 
 
-def basic_term_check(terms):
+def basic_term_check(terms, add_to_db = False):
 
     repo_url_list = get_repos_for_scan()
     
@@ -40,7 +41,7 @@ def basic_term_check(terms):
             print(f"Request didn't come through, status_code: {response.status_code}")
 
         print(f"Scanned: ({repo_url})")
-
+    
     return term_occurrences
 
 def advanced_term_check(terms):
@@ -53,7 +54,7 @@ def full_scan():
     pass
 
 
-def dev_test():   
+def dev_test():
     print("\n")
     print(basic_term_check(["CNN", "U-net", "Chinese"]))
 
