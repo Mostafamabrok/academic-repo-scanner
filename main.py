@@ -141,10 +141,10 @@ def advanced_term_check(repo_db_name="repos_info.json"):
 def main(params, pages):
     repo_search(params=params, pages=pages)
     #advanced_term_check()
-    basic_term_check(["run", "program"])
+    basic_term_check(["CNN", "Model", "Architecture", "U-Net", "V-Net", "MRI", "CAT"])
 
 if __name__ == '__main__':
-    query = "dumprun"
+    query = "Stroke Segmentation"
     sort_by = ""
 
     params = {
@@ -154,4 +154,4 @@ if __name__ == '__main__':
         'type': 'repositories'
     }
 
-    main(params, pages=1)
+    main(params, pages=3)
