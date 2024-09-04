@@ -59,7 +59,7 @@ def repo_search(params, pages=1, repo_db_name="repos_info.json"):
 
     with open(repo_db_name, "w") as json_file:
         json.dump(repos_info, json_file, indent=4)
-        print("JSON data has been dumped.")
+        print(f'Repository data has been dumped to "{repo_db_name}".')
 
 def get_repo_url_list(repo_db_name="repos_info.json"):
     repo_url_list = []
