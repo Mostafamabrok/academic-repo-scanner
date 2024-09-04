@@ -51,9 +51,7 @@ def repo_search(params, pages=1, repo_db_name="repos_info.json"):
             repo_info = {
                 "title": item['name'],
                 "url": item['html_url'],
-                "term_count" : {
-                    "term_counter":1 ,
-                }
+                "term_count" : {}
             }
             if repo_info not in repos_info:  # Avoid adding duplicates
                 repos_info.append(repo_info)
@@ -141,11 +139,11 @@ def advanced_term_check(repo_db_name="repos_info.json"):
 def main(params, pages):
     repo_search(params=params, pages=pages)
     #advanced_term_check()
-    basic_term_check(["CNN", "Model", "Architecture", "U-Net", "V-Net", "MRI", "CAT"])
+    basic_term_check([" CNN ", " Model ", " Architecture ", " U-Net" , " V-Net ", " MRI ", " CAT ", " ISLES ", " Dataset ", " ATLAS ", "2022"])
 
 if __name__ == '__main__':
     query = "Stroke Segmentation"
-    sort_by = ""
+    sort_by = "stars"
 
     params = {
         'q': query,
@@ -154,4 +152,4 @@ if __name__ == '__main__':
         'type': 'repositories'
     }
 
-    main(params, pages=3)
+    main(params, pages=1)
