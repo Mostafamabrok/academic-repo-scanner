@@ -106,7 +106,9 @@ def basic_term_check(terms, repo_db_name="repos_info.json"):
                     repo["term_count"][term] += term_count
                 else:
                     repo["term_count"][term] = term_count
-
+        
+        else:
+            print(f"GET Request failed, Returned with status code: {response.status_code}")
         print(f"Scanned: ({repo_url})")
 
     # Save the updated repository information back to the JSON file
@@ -114,9 +116,31 @@ def basic_term_check(terms, repo_db_name="repos_info.json"):
         json.dump(repos_info, json_file, indent=4)
 
     return term_occurrences
-        
+
+def advanced_term_check(repo_db_name="repos_info.json"):
+    
+    repo_url_list = get_repo_url_list()
+    print(f"Scanning {len(repo_url_list)} repositories for terms.") 
+
+    with open(repo_db_name, "r") as file:
+        repos_info_json = json.load(file)
+
+    for repo_url in repo_url_list:
+
+        response = requests.get(repo_url)
+
+        if response.status_code == 200:
+            pass
+        else:
+            print(f"GET requests failed, returned with status_code: {response.status_code} \nExiting Program...")
+            exit
+
+        soup = BeautifulSoup(response.text, 'html.parser') 
+        repo_text = soup.get_text().lower()
+
 def main(params, pages):
     repo_search(params=params, pages=pages)
+    #advanced_term_check()
     basic_term_check(["run", "program"])
 
 if __name__ == '__main__':
