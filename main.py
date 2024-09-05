@@ -181,8 +181,8 @@ def find_paper_links(repo_db_name="repos_info.json"):
 def main(params, pages):
     repo_search(params=params, pages=pages)
     #advanced_term_check()
-    find_paper_links()
-    #basic_term_check([" CNN ", " Model ", " Architecture ", " U-Net" , " V-Net ", " MRI ", " CAT ", " ISLES ", " Dataset ", " ATLAS ", "2022"])
+    #find_paper_links()
+    basic_term_check([" CNN ", " Model ", " Architecture ", " U-Net" , " V-Net ", " MRI ", " CAT ", " ISLES ", " Dataset ", " ATLAS ", "2022"])
 
 if __name__ == '__main__':
     query = "Stroke Segmentation"
