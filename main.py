@@ -146,7 +146,8 @@ def find_paper_links(repo_db_name="repos_info.json"):
     with open(repo_db_name, "r") as file:
         repos_info_json = json.load(file)
 
-    for repo_url in repo_url_list:
+    for repo in repos_info_json:
+        repo_url = repo['url']
 
         response = requests.get(repo_url)
 
@@ -168,25 +169,28 @@ def find_paper_links(repo_db_name="repos_info.json"):
             for term in terms_to_omit_with:
                 if term in link:
                     links.remove(link)
-
+        
+        if "paper_links" not in repo:
+            repo["paper_links"] = {}
+        
+        x = 0 
         for link in links:
-            print(f"REPO LINK? : ({link})")
+            x=1+x
+            repo["paper_links"][x] = link
+            print(f"({link}) added to database")
 
-
-
-
-
-
-
+    with open(repo_db_name, "w") as json_file:
+        json.dump(repos_info_json, json_file, indent=4)
+    
 def main(params, pages):
     repo_search(params=params, pages=pages)
     #advanced_term_check()
-    #find_paper_links()
-    basic_term_check([" CNN ", " Model ", " Architecture ", " U-Net" , " V-Net ", " MRI ", " CAT ", " ISLES ", " Dataset ", " ATLAS ", "2022"])
+    find_paper_links()
+    #basic_term_check([" CNN ", " Model ", " Architecture ", " U-Net" , " V-Net ", " MRI ", " CAT ", " ISLES ", " Dataset ", " ATLAS ", "2022"])
 
 if __name__ == '__main__':
     query = "Stroke Segmentation"
-    sort_by = ""
+    sort_by = "stars"
 
     params = {
         'q': query,
