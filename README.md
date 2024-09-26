@@ -1,5 +1,8 @@
 # GitHub Repo Scanner
 
+## UPDATE:
+This Project will not be updated until further notice, which is likely not to come. I am way too busy to do anything about this project, but you can still submit pull requests, which I will likely accept. Please don't feel discouraged to contribute.
+
 This Python script is designed to scan GitHub repositories based on a search query and save the relevant repository information in a JSON file. This can be used to analyze trends in academic papers or any other specified criteria by examining repositories that match the search terms.
 
 ## Table of Contents
